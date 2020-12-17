@@ -1,4 +1,4 @@
-//Overfall utils v1.4.3.1
+//Overfall utils v1.4.3.4
 //Just some random trash
 //a, b, c, ... is just a shortcuts
 /*
@@ -7,7 +7,7 @@
 * Crazify(who, spreadx, spready) - making [who] crazy, by randomizing its position from (0%, 0%) to ([spreadx]%; [spready]%)
 * But the shortcut c(who) - executing Crazify(who, spreadx, spready), but spread* is standard, see [standartCValue]
 */
-var standardCValue = 100;
+var standardCValue = 200;
 function a(a1){ExecAScriptByTemplate(a1)}
 function ExecAScriptByTemplate(script){
 	var templ = document.createElement("template");
@@ -23,14 +23,15 @@ function SendAPostRequest(body, address, type){
 	//xhr.onreadystatechange = ...;
 	xhr.send(body);
 }
-function c(c){Crazify(c, 100, 100)}
+function c(c){Crazify(c, standardCValue, standardCValue)}
+function cbyid(id){Crazify(document.getElementById(id), standardCValue, standardCValue)}
 function Crazify(who, spreadx, spready){
 	who.style.position = "absolute";
 	who.style.zIndex = "999999";
 	who.onmouseover = function(){
-		if(Math.random() < 0.5 ) who.style.right = Math.floor(Math.random() * spreadx + 1)+20 + "%";
-		else who.style.left = Math.floor(Math.random() * spreadx + 1)+20 + "%";
-		if(Math.random() < 0.5 ) who.style.top = Math.floor(Math.random() * spready + 1) + "%";
-		else who.style.bottom = Math.floor(Math.random() * spreadx + 1)+20 + "%";
+		if(Math.random() < 0.5 ) who.style.right = Math.floor(Math.random() * spreadx + 1) + "px";
+		else who.style.left = Math.floor(Math.random() * spreadx + 1) + "px";
+		if(Math.random() < 0.5 ) who.style.top = Math.floor(Math.random() * spready + 1) + "px";
+		else who.style.bottom = Math.floor(Math.random() * spreadx + 1) + "px";
 	}
 }
